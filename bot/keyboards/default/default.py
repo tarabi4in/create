@@ -1,13 +1,14 @@
-from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 
 from loader import _
+from models import User
 
 
 def get_default_markup(user):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
+    markup = ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
 
-    markup.add(_('Help 🆘'), _('Settings 🛠'))
-
+    markup.add(_('Интеллект'), _('Воображение'), _('Аккаунт'), _('О Нас'), _('Damn'))
+    
     if user.is_admin:
         markup.add(_('Export users 📁'))
         markup.add(_('Count users 👥'))
@@ -17,3 +18,4 @@ def get_default_markup(user):
         return ReplyKeyboardRemove()
 
     return markup
+
